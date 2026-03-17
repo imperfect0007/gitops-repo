@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  namespace: tenant-a
+  labels:
+    app: nginx
+    tenant: tenant-a
+spec:
+  type: ClusterIP
+  selector:
+    app: nginx
+    tenant: tenant-a
+  ports:
+    - port: 80
+      targetPort: 80
