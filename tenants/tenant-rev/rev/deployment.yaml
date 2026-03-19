@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rev
+    tenant: tenant-rev
+  name: rev
+  namespace: tenant-rev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rev
+      tenant: tenant-rev
+  template:
+    metadata:
+      labels:
+        app: rev
+        tenant: tenant-rev
+    spec:
+      containers:
+      - image: nginx:1.27-alpine
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        name: rev
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        resources:
+          limits:
+            cpu: 200m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi

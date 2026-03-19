@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rev-ingress
+  namespace: tenant-rev
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: rev.tenant-rev.local.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: rev-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix

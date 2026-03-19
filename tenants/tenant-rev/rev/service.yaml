@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: rev
+    tenant: tenant-rev
+  name: rev-service
+  namespace: tenant-rev
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: rev
+    tenant: tenant-rev
+  type: ClusterIP
