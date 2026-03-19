@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: webapp
+    tenant: tenant-acme4
+  name: webapp-service
+  namespace: tenant-acme4
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: webapp
+    tenant: tenant-acme4
+  type: ClusterIP
