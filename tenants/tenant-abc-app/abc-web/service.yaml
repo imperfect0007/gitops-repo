@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: abc-web
+    tenant: tenant-abc-app
+  name: abc-web-service
+  namespace: tenant-abc-app
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: abc-web
+    tenant: tenant-abc-app
+  type: ClusterIP

@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: abc-web-ingress
+  namespace: tenant-abc-app
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: abc-web.tenant-abc-app.local.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: abc-web-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
