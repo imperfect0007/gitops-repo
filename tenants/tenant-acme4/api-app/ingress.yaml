@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-app-ingress
+  namespace: tenant-acme4
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: api-app.tenant-acme4.local.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: api-app-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
