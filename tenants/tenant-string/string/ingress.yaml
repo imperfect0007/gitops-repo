@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: string-ingress
+  namespace: tenant-string
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: string.tenant-string.local.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: string-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
