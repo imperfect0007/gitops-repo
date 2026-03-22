@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: sjeb
+    tenant: tenant-255
+  name: sjeb-service
+  namespace: tenant-255
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: sjeb
+    tenant: tenant-255
+  type: ClusterIP
