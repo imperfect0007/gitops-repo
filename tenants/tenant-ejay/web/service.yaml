@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: web
+    tenant: tenant-ejay
+  name: web-service
+  namespace: tenant-ejay
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: web
+    tenant: tenant-ejay
+  type: ClusterIP
