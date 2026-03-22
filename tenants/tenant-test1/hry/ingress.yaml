@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hry-ingress
+  namespace: tenant-test1
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: hry.tenant-test1.local.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: hry-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
